@@ -23,7 +23,7 @@
   <header class="site-header">
     <div class="header-inner">
       <div class="logo">
-        <img src="/images/logo.png" alt="MS Security Group" class="logo-img" />
+        <img src="/images/logo-white.png" alt="MS Security Group" class="logo-img" />
       </div>
     </div>
   </header>
@@ -37,24 +37,28 @@
 
         <div class="landing-badge-preview" aria-hidden="true">
           <svg viewBox="0 0 120 140" fill="none" xmlns="http://www.w3.org/2000/svg" class="shield-icon">
-            <path d="M60 4 L108 24 L108 72 C108 100 84 126 60 136 C36 126 12 100 12 72 L12 24 Z"
-                  fill="url(#shieldGrad)" stroke="url(#shieldStroke)" stroke-width="2"/>
             <defs>
               <linearGradient id="shieldGrad" x1="60" y1="4" x2="60" y2="136" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stop-color="#1a2e4a"/>
-                <stop offset="100%" stop-color="#0d1b2a"/>
+                <stop offset="0%" stop-color="#163d72"/>
+                <stop offset="100%" stop-color="#0a1f3d"/>
               </linearGradient>
               <linearGradient id="shieldStroke" x1="0" y1="0" x2="120" y2="140" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stop-color="#e8b96a"/>
-                <stop offset="100%" stop-color="#9a6e1e"/>
+                <stop offset="0%" stop-color="#5ba3f5"/>
+                <stop offset="100%" stop-color="#1B4F8A"/>
               </linearGradient>
+              <clipPath id="shieldClip">
+                <path d="M60 4 L108 24 L108 72 C108 100 84 126 60 136 C36 126 12 100 12 72 L12 24 Z"/>
+              </clipPath>
             </defs>
-            <!-- anchor inside shield -->
-            <circle cx="60" cy="52" r="5" fill="#c9943a"/>
-            <line x1="60" y1="57" x2="60" y2="88" stroke="#c9943a" stroke-width="3" stroke-linecap="round"/>
-            <line x1="46" y1="66" x2="74" y2="66" stroke="#c9943a" stroke-width="3" stroke-linecap="round"/>
-            <path d="M46 88 Q40 82 46 76" stroke="#c9943a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-            <path d="M74 88 Q80 82 74 76" stroke="#c9943a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <!-- Shield body -->
+            <path d="M60 4 L108 24 L108 72 C108 100 84 126 60 136 C36 126 12 100 12 72 L12 24 Z"
+                  fill="url(#shieldGrad)" stroke="url(#shieldStroke)" stroke-width="2"/>
+            <!-- Inner shield border ring -->
+            <path d="M60 10 L102 27 L102 72 C102 97 80 121 60 130 C40 121 18 97 18 72 L18 27 Z"
+                  fill="none" stroke="rgba(91,163,245,0.2)" stroke-width="1"/>
+            <!-- Logo image clipped inside shield -->
+            <image href="/images/logo-white.png" x="22" y="24" width="76" height="76"
+                   clip-path="url(#shieldClip)" preserveAspectRatio="xMidYMid meet"/>
           </svg>
         </div>
 
@@ -121,16 +125,15 @@
         <div id="badge-container" class="badge-container">
           <div id="badge" class="badge">
 
+            <!-- Logo watermark -->
+            <div class="badge-watermark" aria-hidden="true">
+              <img src="/images/logo.png" alt="" />
+            </div>
+
             <!-- Top ribbon / header -->
             <div class="badge-header">
               <div class="badge-header-left">
-                <svg class="badge-anchor" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <circle cx="18" cy="8" r="3.5" fill="currentColor"/>
-                  <line x1="18" y1="11.5" x2="18" y2="28" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-                  <line x1="10" y1="18" x2="26" y2="18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-                  <path d="M10 28 Q5 22 10 16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
-                  <path d="M26 28 Q31 22 26 16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
-                </svg>
+                <img src="/images/logo-white.png" alt="MS Security Group" class="badge-logo" />
               </div>
               <div class="badge-header-center">
                 <span class="badge-company">MS SECURITY GROUP</span>
