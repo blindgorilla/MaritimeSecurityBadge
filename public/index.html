@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maritime Security Badge — MS Security Group</title>
+  <meta name="description" content="View and share your operational service badge from MS Security Group." />
+
+  <!-- Open Graph for social sharing -->
+  <meta property="og:title" content="Maritime Security Badge — MS Security Group" />
+  <meta property="og:description" content="View your proud operational service record." />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+  <!-- ── HEADER ─────────────────────────────────────────── -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo">
+        <svg class="logo-anchor" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="20" cy="20" r="19" stroke="currentColor" stroke-width="1.5"/>
+          <circle cx="20" cy="10" r="2.5" fill="currentColor"/>
+          <line x1="20" y1="12.5" x2="20" y2="30" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M12 18 Q8 22 12 28 Q16 32 20 30 Q24 32 28 28 Q32 22 28 18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <line x1="13" y1="18" x2="27" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span class="logo-text">MS Security Group</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── MAIN ───────────────────────────────────────────── -->
+  <main>
+
+    <!-- SECTION: Landing / Hero -->
+    <section id="section-landing" class="section-landing active">
+      <div class="landing-content">
+
+        <div class="landing-badge-preview" aria-hidden="true">
+          <svg viewBox="0 0 120 140" fill="none" xmlns="http://www.w3.org/2000/svg" class="shield-icon">
+            <path d="M60 4 L108 24 L108 72 C108 100 84 126 60 136 C36 126 12 100 12 72 L12 24 Z"
+                  fill="url(#shieldGrad)" stroke="url(#shieldStroke)" stroke-width="2"/>
+            <defs>
+              <linearGradient id="shieldGrad" x1="60" y1="4" x2="60" y2="136" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#1a2e4a"/>
+                <stop offset="100%" stop-color="#0d1b2a"/>
+              </linearGradient>
+              <linearGradient id="shieldStroke" x1="0" y1="0" x2="120" y2="140" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#e8b96a"/>
+                <stop offset="100%" stop-color="#9a6e1e"/>
+              </linearGradient>
+            </defs>
+            <!-- anchor inside shield -->
+            <circle cx="60" cy="52" r="5" fill="#c9943a"/>
+            <line x1="60" y1="57" x2="60" y2="88" stroke="#c9943a" stroke-width="3" stroke-linecap="round"/>
+            <line x1="46" y1="66" x2="74" y2="66" stroke="#c9943a" stroke-width="3" stroke-linecap="round"/>
+            <path d="M46 88 Q40 82 46 76" stroke="#c9943a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <path d="M74 88 Q80 82 74 76" stroke="#c9943a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+
+        <h1 class="landing-title">Your Operational<br/>Service Badge</h1>
+        <p class="landing-subtitle">
+          Every day at sea tells a story. Retrieve your official badge from<br/>
+          <strong>MS Security Group</strong> and share your service record with pride.
+        </p>
+
+        <div class="search-card">
+          <p class="search-label">Enter your Employee ID or email address</p>
+          <div class="search-row">
+            <input
+              type="text"
+              id="search-input"
+              class="search-input"
+              placeholder="e.g. MSG-001 or james.carter@mssecurity.com"
+              autocomplete="off"
+              spellcheck="false"
+            />
+            <button id="search-btn" class="btn btn-primary">
+              <span class="btn-text">Find My Badge</span>
+              <span class="btn-spinner" hidden>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="2" stroke-dasharray="40" stroke-dashoffset="10"/>
+                </svg>
+              </span>
+            </button>
+          </div>
+          <p id="search-error" class="search-error" hidden></p>
+          <p class="search-hint">Try: <button class="demo-btn" data-query="MSG-001">MSG-001</button> · <button class="demo-btn" data-query="MSG-003">MSG-003</button> · <button class="demo-btn" data-query="sarah.okafor@mssecurity.com">sarah.okafor@...</button></p>
+        </div>
+
+        <div class="landing-features">
+          <div class="feature">
+            <span class="feature-icon">&#127919;</span>
+            <span>Professional badge design</span>
+          </div>
+          <div class="feature">
+            <span class="feature-icon">&#128247;</span>
+            <span>Download as image</span>
+          </div>
+          <div class="feature">
+            <span class="feature-icon">&#128279;</span>
+            <span>Share to LinkedIn &amp; WhatsApp</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION: Badge Display -->
+    <section id="section-badge" class="section-badge" hidden>
+      <div class="badge-page-inner">
+
+        <button id="btn-back" class="btn-back">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M11 4L6 9L11 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Back
+        </button>
+
+        <!-- The badge — this element is captured for download -->
+        <div id="badge-container" class="badge-container">
+          <div id="badge" class="badge">
+
+            <!-- Top ribbon / header -->
+            <div class="badge-header">
+              <div class="badge-header-left">
+                <svg class="badge-anchor" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <circle cx="18" cy="8" r="3.5" fill="currentColor"/>
+                  <line x1="18" y1="11.5" x2="18" y2="28" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                  <line x1="10" y1="18" x2="26" y2="18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                  <path d="M10 28 Q5 22 10 16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
+                  <path d="M26 28 Q31 22 26 16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="badge-header-center">
+                <span class="badge-company">MS SECURITY GROUP</span>
+                <span class="badge-subtitle-header">OFFICIAL SERVICE RECORD</span>
+              </div>
+              <div class="badge-header-right">
+                <div class="badge-stars">&#9733;&#9733;&#9733;</div>
+              </div>
+            </div>
+
+            <!-- Divider -->
+            <div class="badge-divider">
+              <div class="badge-divider-line"></div>
+              <svg class="badge-divider-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M12 2L14.5 9H22L16 13.5L18.5 20.5L12 16L5.5 20.5L8 13.5L2 9H9.5Z" fill="currentColor"/>
+              </svg>
+              <div class="badge-divider-line"></div>
+            </div>
+
+            <!-- Guard avatar & name -->
+            <div class="badge-identity">
+              <div class="badge-avatar" id="badge-avatar">
+                <span id="badge-initials"></span>
+              </div>
+              <div class="badge-name-block">
+                <h2 id="badge-name" class="badge-name"></h2>
+                <p id="badge-role" class="badge-role"></p>
+              </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="badge-stats-grid">
+              <div class="badge-stat">
+                <span id="badge-days" class="stat-value"></span>
+                <span class="stat-label">Days at Sea</span>
+              </div>
+              <div class="badge-stat-divider"></div>
+              <div class="badge-stat">
+                <span id="badge-missions" class="stat-value"></span>
+                <span class="stat-label">Missions Completed</span>
+              </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="badge-footer">
+              <div class="badge-footer-left">
+                <span class="badge-footer-label">Since</span>
+                <span id="badge-year" class="badge-footer-value"></span>
+              </div>
+              <div class="badge-waves" aria-hidden="true">
+                <svg viewBox="0 0 120 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0 10 Q10 4 20 10 Q30 16 40 10 Q50 4 60 10 Q70 16 80 10 Q90 4 100 10 Q110 16 120 10"
+                        stroke="currentColor" stroke-width="1.5" fill="none" opacity="0.4"/>
+                  <path d="M0 14 Q10 8 20 14 Q30 20 40 14 Q50 8 60 14 Q70 20 80 14 Q90 8 100 14 Q110 20 120 14"
+                        stroke="currentColor" stroke-width="1" fill="none" opacity="0.25"/>
+                </svg>
+              </div>
+              <div class="badge-footer-right">
+                <span class="badge-footer-label">Badge No.</span>
+                <span id="badge-number" class="badge-footer-value badge-number"></span>
+              </div>
+            </div>
+
+          </div><!-- /.badge -->
+        </div><!-- /.badge-container -->
+
+        <!-- Share / Download actions -->
+        <div class="badge-actions">
+          <button id="btn-download" class="btn btn-primary btn-action">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M9 2V12M9 12L5 8M9 12L13 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M2 14H16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            Download Badge
+          </button>
+          <button id="btn-copy-link" class="btn btn-secondary btn-action">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M7 5H5C3.9 5 3 5.9 3 7V13C3 14.1 3.9 15 5 15H11C12.1 15 13 14.1 13 13V11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              <rect x="7" y="3" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.8"/>
+            </svg>
+            Copy Share Link
+          </button>
+          <button id="btn-share-linkedin" class="btn btn-linkedin btn-action">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="1" y="1" width="16" height="16" rx="3" fill="currentColor"/>
+              <path d="M5.5 7.5V13" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="5.5" cy="5.5" r="1" fill="white"/>
+              <path d="M9 7.5V13M9 9.5C9 8.4 9.9 7.5 11 7.5C12.1 7.5 13 8.4 13 9.5V13" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            Share on LinkedIn
+          </button>
+          <button id="btn-share-whatsapp" class="btn btn-whatsapp btn-action">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="9" cy="9" r="8" fill="currentColor"/>
+              <path d="M5.5 5.5 Q7 4 9 4 C12 4 14 6 14 9 C14 12 12 14 9 14 Q7.5 14 6 13.2 L4 14 L4.8 12 Q4 10.5 4 9 Q4 7 5.5 5.5Z" fill="white" opacity="0.15"/>
+              <path d="M6 8.5 C6.5 9.5 7.5 10.5 8.5 11 C9 11.2 9.5 11 9.7 10.5 L10 10 C10.1 9.8 10.3 9.8 10.5 9.9 L11.5 10.4 C11.7 10.5 11.8 10.7 11.7 10.9 C11.5 11.5 10.8 12 10 11.8 C8.5 11.4 6.6 9.5 6.2 8 C6 7.2 6.5 6.5 7.1 6.3 C7.3 6.2 7.5 6.3 7.6 6.5 L8.1 7.5 C8.2 7.7 8.2 7.9 8 8 L7.5 8.3 C7 8.5 6.8 9 7 9.2" stroke="white" stroke-width="0.8" fill="none" stroke-linecap="round"/>
+            </svg>
+            Share on WhatsApp
+          </button>
+        </div>
+
+        <p id="copy-confirm" class="copy-confirm" hidden>Link copied to clipboard!</p>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── FOOTER ──────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <p>&copy; <span id="footer-year"></span> MS Security Group. All rights reserved.</p>
+  </footer>
+
+  <!-- html2canvas for badge download -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>
