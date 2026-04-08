@@ -18,6 +18,7 @@ const footerYear       = document.getElementById("footer-year");
 const badgeInitials    = document.getElementById("badge-initials");
 const badgeName        = document.getElementById("badge-name");
 const badgeRole        = document.getElementById("badge-role");
+const badgeNationality = document.getElementById("badge-nationality");
 const badgeDays        = document.getElementById("badge-days");
 const badgeMissions    = document.getElementById("badge-missions");
 const badgeYear        = document.getElementById("badge-year");
@@ -49,17 +50,13 @@ searchInput.addEventListener("input", () => {
 });
 
 btnBack.addEventListener("click", showLanding);
-
 btnDownload.addEventListener("click", downloadBadge);
-
 btnCopyLink.addEventListener("click", copyShareLink);
-
 btnLinkedin.addEventListener("click", shareLinkedIn);
-
 btnWhatsapp.addEventListener("click", shareWhatsApp);
 
-// Demo buttons on the landing page
-document.querySelectorAll(".demo-btn").forEach((btn) => {
+// All demo buttons (search hint + demo panel)
+document.querySelectorAll(".demo-btn, .demo-op-btn").forEach((btn) => {
   btn.addEventListener("click", () => {
     searchInput.value = btn.dataset.query;
     handleSearch();
@@ -70,7 +67,7 @@ document.querySelectorAll(".demo-btn").forEach((btn) => {
 function handleSearch() {
   const query = searchInput.value.trim();
   if (!query) {
-    showError("Please enter your employee ID or email address.");
+    showError("Please enter your employee ID or name.");
     searchInput.focus();
     return;
   }
@@ -86,14 +83,14 @@ async function loadBadge(query) {
     const data = await res.json();
 
     if (!res.ok) {
-      showError(data.error || "Guard not found. Please check your ID or email.");
+      showError(data.error || "Guard not found. Please check your ID or name.");
       return;
     }
 
     currentGuard = data;
     renderBadge(data);
     showBadgeSection();
-    updateURLParam(data.id);
+    updateURLParam(data.employeeId);
   } catch {
     showError("Could not connect to the server. Please try again.");
   } finally {
@@ -102,20 +99,31 @@ async function loadBadge(query) {
 }
 
 // ── Badge rendering ─────────────────────────────────────────
+const nationalityFlags = {
+  "Greek":        "🇬🇷",
+  "South African": "🇿🇦"
+};
+
 function renderBadge(guard) {
-  // Initials
-  const parts = guard.name.trim().split(" ");
+  // Initials from full name
+  const parts = guard.fullName.trim().split(" ");
   const initials = parts.length >= 2
     ? parts[0][0] + parts[parts.length - 1][0]
     : parts[0][0];
   badgeInitials.textContent = initials.toUpperCase();
 
-  badgeName.textContent     = guard.name.toUpperCase();
-  badgeRole.textContent     = guard.role.toUpperCase();
-  badgeDays.textContent     = formatNumber(guard.daysAtSea);
-  badgeMissions.textContent = formatNumber(guard.missionsCompleted);
-  badgeYear.textContent     = guard.joinYear;
-  badgeNumber.textContent   = guard.badgeNumber;
+  badgeName.textContent        = guard.fullName.toUpperCase();
+  badgeRole.textContent        = guard.role.toUpperCase();
+
+  const flag = nationalityFlags[guard.nationality] || "";
+  badgeNationality.textContent = flag
+    ? `${flag}  ${guard.nationality}`
+    : guard.nationality;
+
+  badgeDays.textContent        = formatNumber(guard.daysAtSea);
+  badgeMissions.textContent    = formatNumber(guard.missionsCompleted);
+  badgeYear.textContent        = guard.joinYear;
+  badgeNumber.textContent      = guard.badgeNumber;
 }
 
 function formatNumber(n) {
@@ -144,7 +152,6 @@ function showLanding() {
 async function downloadBadge() {
   const badge = document.getElementById("badge");
   btnDownload.disabled = true;
-  btnDownload.querySelector(".btn-text") && null; // no spinner in download btn
 
   try {
     const canvas = await html2canvas(badge, {
@@ -153,7 +160,6 @@ async function downloadBadge() {
       allowTaint: false,
       backgroundColor: null,
       logging: false,
-      // Ensure fonts are loaded before capture
       onclone: (cloned) => {
         const clonedBadge = cloned.getElementById("badge");
         clonedBadge.style.transform = "none";
@@ -163,7 +169,7 @@ async function downloadBadge() {
 
     const link = document.createElement("a");
     const safeName = currentGuard
-      ? currentGuard.name.replace(/\s+/g, "_")
+      ? currentGuard.fullName.replace(/\s+/g, "_")
       : "badge";
     link.download = `MSS_Badge_${safeName}.png`;
     link.href = canvas.toDataURL("image/png");
@@ -179,13 +185,11 @@ async function downloadBadge() {
 // ── Copy share link ──────────────────────────────────────────
 function copyShareLink() {
   if (!currentGuard) return;
-
-  const url = buildShareUrl(currentGuard.id);
+  const url = buildShareUrl(currentGuard.employeeId);
 
   if (navigator.clipboard && window.isSecureContext) {
     navigator.clipboard.writeText(url).then(() => showCopyConfirm());
   } else {
-    // Fallback for http/older browsers
     const el = document.createElement("textarea");
     el.value = url;
     el.style.position = "absolute";
@@ -206,7 +210,7 @@ function showCopyConfirm() {
 // ── Social sharing ───────────────────────────────────────────
 function shareLinkedIn() {
   if (!currentGuard) return;
-  const url = encodeURIComponent(buildShareUrl(currentGuard.id));
+  const url = encodeURIComponent(buildShareUrl(currentGuard.employeeId));
   const text = encodeURIComponent(
     `Proud to share my operational service badge from MS Security Group! ` +
     `${currentGuard.daysAtSea} days at sea · ${currentGuard.missionsCompleted} missions completed. #MaritimeSecurity #MSSecurity`
@@ -220,23 +224,24 @@ function shareLinkedIn() {
 
 function shareWhatsApp() {
   if (!currentGuard) return;
-  const shareUrl = buildShareUrl(currentGuard.id);
+  const shareUrl = buildShareUrl(currentGuard.employeeId);
+  const flag = nationalityFlags[currentGuard.nationality] || "";
   const text = encodeURIComponent(
     `Check out my Maritime Security Badge from MS Security Group!\n` +
-    `${currentGuard.name} · ${currentGuard.daysAtSea} days at sea · ${currentGuard.missionsCompleted} missions\n\n${shareUrl}`
+    `${currentGuard.fullName} ${flag} · ${currentGuard.daysAtSea} days at sea · ${currentGuard.missionsCompleted} missions\n\n${shareUrl}`
   );
   window.open(`https://wa.me/?text=${text}`, "_blank", "noopener");
 }
 
 // ── Helpers ──────────────────────────────────────────────────
-function buildShareUrl(id) {
+function buildShareUrl(employeeId) {
   const base = `${window.location.origin}${window.location.pathname}`;
-  return `${base}?id=${encodeURIComponent(id)}`;
+  return `${base}?id=${encodeURIComponent(employeeId)}`;
 }
 
-function updateURLParam(id) {
+function updateURLParam(employeeId) {
   const url = new URL(window.location);
-  url.searchParams.set("id", id);
+  url.searchParams.set("id", employeeId);
   window.history.replaceState({}, "", url.toString());
 }
 

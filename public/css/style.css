@@ -195,6 +195,71 @@ main { flex: 1; }
 }
 .demo-btn:hover { color: var(--white); text-decoration: underline; }
 
+/* ── DEMO OPERATORS PANEL ────────────────────────────────── */
+.demo-section {
+  width: 100%;
+  background: rgba(15,45,87,0.35);
+  border: 1px solid rgba(42,125,225,0.2);
+  border-radius: var(--radius-md);
+  padding: 16px 18px;
+}
+
+.demo-section-title {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--muted-light);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.demo-section-title svg { flex-shrink: 0; color: var(--blue-primary); }
+
+.demo-ops-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.demo-op-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  background: rgba(6,15,29,0.5);
+  border: 1px solid rgba(42,125,225,0.18);
+  border-radius: var(--radius-sm);
+  padding: 9px 10px;
+  cursor: pointer;
+  transition: all var(--transition);
+  text-align: left;
+}
+.demo-op-btn:hover {
+  background: rgba(42,125,225,0.12);
+  border-color: rgba(42,125,225,0.45);
+  transform: translateY(-1px);
+}
+.demo-op-flag { font-size: 1rem; line-height: 1; }
+.demo-op-id {
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--blue-bright);
+  letter-spacing: 0.06em;
+  line-height: 1.2;
+}
+.demo-op-name {
+  font-size: 0.72rem;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  line-height: 1.2;
+}
+
 /* Feature pills */
 .landing-features {
   display: flex;
@@ -492,6 +557,14 @@ main { flex: 1; }
   font-weight: 500;
   margin-top: 4px;
 }
+.badge-nationality {
+  font-size: 0.72rem;
+  color: var(--muted-light);
+  letter-spacing: 0.05em;
+  font-weight: 400;
+  margin-top: 5px;
+  opacity: 0.85;
+}
 
 /* Stats */
 .badge-stats-grid {
@@ -628,6 +701,10 @@ main { flex: 1; }
 .badge-actions { animation-delay: 0.1s; }
 
 /* ── RESPONSIVE ──────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .demo-ops-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
 @media (max-width: 500px) {
   .search-row { flex-direction: column; }
   .badge-actions { grid-template-columns: 1fr; }

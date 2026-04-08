@@ -75,7 +75,7 @@
               type="text"
               id="search-input"
               class="search-input"
-              placeholder="e.g. MSG-001 or james.carter@mssecurity.com"
+              placeholder="e.g. MS1001 or Iordanis Tzourovrts"
               autocomplete="off"
               spellcheck="false"
             />
@@ -89,7 +89,57 @@
             </button>
           </div>
           <p id="search-error" class="search-error" hidden></p>
-          <p class="search-hint">Try: <button class="demo-btn" data-query="MSG-001">MSG-001</button> · <button class="demo-btn" data-query="MSG-003">MSG-003</button> · <button class="demo-btn" data-query="sarah.okafor@mssecurity.com">sarah.okafor@...</button></p>
+          <p class="search-hint">Search by employee ID or full name</p>
+        </div>
+
+        <!-- Demo operators panel -->
+        <div class="demo-section">
+          <p class="demo-section-title">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.5"/><path d="M7 6.5V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="7" cy="4.5" r="0.75" fill="currentColor"/></svg>
+            Demo operators — click any to load badge
+          </p>
+          <div class="demo-ops-grid">
+            <button class="demo-op-btn" data-query="MS1001">
+              <span class="demo-op-flag">🇬🇷</span>
+              <span class="demo-op-id">MS1001</span>
+              <span class="demo-op-name">I. Tzourovrts</span>
+            </button>
+            <button class="demo-op-btn" data-query="MS1002">
+              <span class="demo-op-flag">🇿🇦</span>
+              <span class="demo-op-id">MS1002</span>
+              <span class="demo-op-name">J. Swart</span>
+            </button>
+            <button class="demo-op-btn" data-query="MS1003">
+              <span class="demo-op-flag">🇬🇷</span>
+              <span class="demo-op-id">MS1003</span>
+              <span class="demo-op-name">K. Bakousis</span>
+            </button>
+            <button class="demo-op-btn" data-query="MS1004">
+              <span class="demo-op-flag">🇿🇦</span>
+              <span class="demo-op-id">MS1004</span>
+              <span class="demo-op-name">J. Prinsloo</span>
+            </button>
+            <button class="demo-op-btn" data-query="MS1005">
+              <span class="demo-op-flag">🇬🇷</span>
+              <span class="demo-op-id">MS1005</span>
+              <span class="demo-op-name">T. Pantelaios</span>
+            </button>
+            <button class="demo-op-btn" data-query="MS1006">
+              <span class="demo-op-flag">🇬🇷</span>
+              <span class="demo-op-id">MS1006</span>
+              <span class="demo-op-name">G. Stratigopoulos</span>
+            </button>
+            <button class="demo-op-btn" data-query="MS1007">
+              <span class="demo-op-flag">🇬🇷</span>
+              <span class="demo-op-id">MS1007</span>
+              <span class="demo-op-name">A. Tsantis</span>
+            </button>
+            <button class="demo-op-btn" data-query="MS1008">
+              <span class="demo-op-flag">🇬🇷</span>
+              <span class="demo-op-id">MS1008</span>
+              <span class="demo-op-name">K. Karampesinis</span>
+            </button>
+          </div>
         </div>
 
         <div class="landing-features">
@@ -161,6 +211,7 @@
               <div class="badge-name-block">
                 <h2 id="badge-name" class="badge-name"></h2>
                 <p id="badge-role" class="badge-role"></p>
+                <p id="badge-nationality" class="badge-nationality"></p>
               </div>
             </div>
 
