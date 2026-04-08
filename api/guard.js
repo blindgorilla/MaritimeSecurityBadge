@@ -1,9 +1,17 @@
-const express = require("express");
-const router = express.Router();
+/**
+ * Vercel serverless function — GET /api/guard?query=<id_or_name>
+ *
+ * This file is the Vercel-compatible equivalent of routes/api.js.
+ * server.js + routes/api.js are kept for local development with Express.
+ */
+
 const { findGuard } = require("../data/guards");
 
-// GET /api/guard?query=<employee_id_or_name>
-router.get("/guard", (req, res) => {
+module.exports = function handler(req, res) {
+  if (req.method !== "GET") {
+    return res.status(405).json({ error: "Method not allowed." });
+  }
+
   const query = req.query.query;
 
   if (!query || query.trim() === "") {
@@ -18,7 +26,6 @@ router.get("/guard", (req, res) => {
     });
   }
 
-  // Return only the fields needed for the badge (never expose internal data)
   res.json({
     employeeId:        guard.employeeId,
     fullName:          guard.fullName,
@@ -30,6 +37,4 @@ router.get("/guard", (req, res) => {
     badgeNumber:       guard.badgeNumber,
     company:           "MS Security Group"
   });
-});
-
-module.exports = router;
+};

@@ -23,14 +23,7 @@
   <header class="site-header">
     <div class="header-inner">
       <div class="logo">
-        <svg class="logo-anchor" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <circle cx="20" cy="20" r="19" stroke="currentColor" stroke-width="1.5"/>
-          <circle cx="20" cy="10" r="2.5" fill="currentColor"/>
-          <line x1="20" y1="12.5" x2="20" y2="30" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <path d="M12 18 Q8 22 12 28 Q16 32 20 30 Q24 32 28 28 Q32 22 28 18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
-          <line x1="13" y1="18" x2="27" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-        <span class="logo-text">MS Security Group</span>
+        <img src="/images/logo-white.png" alt="MS Security Group" class="logo-img" />
       </div>
     </div>
   </header>
@@ -44,24 +37,28 @@
 
         <div class="landing-badge-preview" aria-hidden="true">
           <svg viewBox="0 0 120 140" fill="none" xmlns="http://www.w3.org/2000/svg" class="shield-icon">
-            <path d="M60 4 L108 24 L108 72 C108 100 84 126 60 136 C36 126 12 100 12 72 L12 24 Z"
-                  fill="url(#shieldGrad)" stroke="url(#shieldStroke)" stroke-width="2"/>
             <defs>
               <linearGradient id="shieldGrad" x1="60" y1="4" x2="60" y2="136" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stop-color="#1a2e4a"/>
-                <stop offset="100%" stop-color="#0d1b2a"/>
+                <stop offset="0%" stop-color="#163d72"/>
+                <stop offset="100%" stop-color="#0a1f3d"/>
               </linearGradient>
               <linearGradient id="shieldStroke" x1="0" y1="0" x2="120" y2="140" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stop-color="#e8b96a"/>
-                <stop offset="100%" stop-color="#9a6e1e"/>
+                <stop offset="0%" stop-color="#5ba3f5"/>
+                <stop offset="100%" stop-color="#1B4F8A"/>
               </linearGradient>
+              <clipPath id="shieldClip">
+                <path d="M60 4 L108 24 L108 72 C108 100 84 126 60 136 C36 126 12 100 12 72 L12 24 Z"/>
+              </clipPath>
             </defs>
-            <!-- anchor inside shield -->
-            <circle cx="60" cy="52" r="5" fill="#c9943a"/>
-            <line x1="60" y1="57" x2="60" y2="88" stroke="#c9943a" stroke-width="3" stroke-linecap="round"/>
-            <line x1="46" y1="66" x2="74" y2="66" stroke="#c9943a" stroke-width="3" stroke-linecap="round"/>
-            <path d="M46 88 Q40 82 46 76" stroke="#c9943a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-            <path d="M74 88 Q80 82 74 76" stroke="#c9943a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <!-- Shield body -->
+            <path d="M60 4 L108 24 L108 72 C108 100 84 126 60 136 C36 126 12 100 12 72 L12 24 Z"
+                  fill="url(#shieldGrad)" stroke="url(#shieldStroke)" stroke-width="2"/>
+            <!-- Inner shield border ring -->
+            <path d="M60 10 L102 27 L102 72 C102 97 80 121 60 130 C40 121 18 97 18 72 L18 27 Z"
+                  fill="none" stroke="rgba(91,163,245,0.2)" stroke-width="1"/>
+            <!-- Logo image clipped inside shield -->
+            <image href="/images/logo-white.png" x="22" y="24" width="76" height="76"
+                   clip-path="url(#shieldClip)" preserveAspectRatio="xMidYMid meet"/>
           </svg>
         </div>
 
@@ -78,7 +75,7 @@
               type="text"
               id="search-input"
               class="search-input"
-              placeholder="e.g. MSG-001 or james.carter@mssecurity.com"
+              placeholder="e.g. MS1001 or Iordanis Tzourovrts"
               autocomplete="off"
               spellcheck="false"
             />
@@ -92,7 +89,57 @@
             </button>
           </div>
           <p id="search-error" class="search-error" hidden></p>
-          <p class="search-hint">Try: <button class="demo-btn" data-query="MSG-001">MSG-001</button> · <button class="demo-btn" data-query="MSG-003">MSG-003</button> · <button class="demo-btn" data-query="sarah.okafor@mssecurity.com">sarah.okafor@...</button></p>
+          <p class="search-hint">Search by employee ID or full name</p>
+        </div>
+
+        <!-- Demo operators panel -->
+        <div class="demo-section">
+          <p class="demo-section-title">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.5"/><path d="M7 6.5V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="7" cy="4.5" r="0.75" fill="currentColor"/></svg>
+            Demo operators — click any to load badge
+          </p>
+          <div class="demo-ops-grid">
+            <button class="demo-op-btn" data-query="MS1001">
+              <span class="demo-op-flag">🇬🇷</span>
+              <span class="demo-op-id">MS1001</span>
+              <span class="demo-op-name">I. Tzourovrts</span>
+            </button>
+            <button class="demo-op-btn" data-query="MS1002">
+              <span class="demo-op-flag">🇿🇦</span>
+              <span class="demo-op-id">MS1002</span>
+              <span class="demo-op-name">J. Swart</span>
+            </button>
+            <button class="demo-op-btn" data-query="MS1003">
+              <span class="demo-op-flag">🇬🇷</span>
+              <span class="demo-op-id">MS1003</span>
+              <span class="demo-op-name">K. Bakousis</span>
+            </button>
+            <button class="demo-op-btn" data-query="MS1004">
+              <span class="demo-op-flag">🇿🇦</span>
+              <span class="demo-op-id">MS1004</span>
+              <span class="demo-op-name">J. Prinsloo</span>
+            </button>
+            <button class="demo-op-btn" data-query="MS1005">
+              <span class="demo-op-flag">🇬🇷</span>
+              <span class="demo-op-id">MS1005</span>
+              <span class="demo-op-name">T. Pantelaios</span>
+            </button>
+            <button class="demo-op-btn" data-query="MS1006">
+              <span class="demo-op-flag">🇬🇷</span>
+              <span class="demo-op-id">MS1006</span>
+              <span class="demo-op-name">G. Stratigopoulos</span>
+            </button>
+            <button class="demo-op-btn" data-query="MS1007">
+              <span class="demo-op-flag">🇬🇷</span>
+              <span class="demo-op-id">MS1007</span>
+              <span class="demo-op-name">A. Tsantis</span>
+            </button>
+            <button class="demo-op-btn" data-query="MS1008">
+              <span class="demo-op-flag">🇬🇷</span>
+              <span class="demo-op-id">MS1008</span>
+              <span class="demo-op-name">K. Karampesinis</span>
+            </button>
+          </div>
         </div>
 
         <div class="landing-features">
@@ -128,16 +175,15 @@
         <div id="badge-container" class="badge-container">
           <div id="badge" class="badge">
 
+            <!-- Logo watermark -->
+            <div class="badge-watermark" aria-hidden="true">
+              <img src="/images/logo.png" alt="" />
+            </div>
+
             <!-- Top ribbon / header -->
             <div class="badge-header">
               <div class="badge-header-left">
-                <svg class="badge-anchor" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <circle cx="18" cy="8" r="3.5" fill="currentColor"/>
-                  <line x1="18" y1="11.5" x2="18" y2="28" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-                  <line x1="10" y1="18" x2="26" y2="18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-                  <path d="M10 28 Q5 22 10 16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
-                  <path d="M26 28 Q31 22 26 16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
-                </svg>
+                <img src="/images/logo-white.png" alt="MS Security Group" class="badge-logo" />
               </div>
               <div class="badge-header-center">
                 <span class="badge-company">MS SECURITY GROUP</span>
@@ -165,6 +211,7 @@
               <div class="badge-name-block">
                 <h2 id="badge-name" class="badge-name"></h2>
                 <p id="badge-role" class="badge-role"></p>
+                <p id="badge-nationality" class="badge-nationality"></p>
               </div>
             </div>
 
